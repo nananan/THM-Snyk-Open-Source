@@ -31,6 +31,7 @@ function sendFileWithUserSuppliedName(res, filePath) {
 }
 
 app.disable('x-powered-by');
+app.use(app.csrf());
 
 app.get('/vulnerable', (req, res) => {
   const filePath = 'files';

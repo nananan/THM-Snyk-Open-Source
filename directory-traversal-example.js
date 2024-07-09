@@ -13,7 +13,7 @@ function sendFileWithUserSuppliedName(res, filePath) {
   urlPath = urlPath.replace(/%2f|%5c/ig, '/');
 
   const normalizedPath = path.normalize(urlPath);
-	if (!normalizedPath.startsWith('/public')) {
+	if (!normalizedPath.startsWith(filePath)) {
 		throw new Error('Illegal path supplied in the input url: ' + urlPath);
 	}
   

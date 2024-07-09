@@ -11,6 +11,7 @@ function sendFileWithUserSuppliedName(res, filePath) {
   let urlPath = url.parse(filename).pathname;
   urlPath = urlPath.replace(/%2e/ig, '.');
   urlPath = urlPath.replace(/%2f|%5c/ig, '/');
+  urlPath = urlPath.replace(/\.\.\//ig,'');
 
   const normalizedPath = path.normalize(urlPath);
 	if (!normalizedPath.startsWith(filePath)) {

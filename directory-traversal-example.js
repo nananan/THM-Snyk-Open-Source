@@ -30,6 +30,8 @@ function sendFileWithUserSuppliedName(res, filePath) {
   });
 }
 
+app.disable('x-powered-by');
+
 app.get('/vulnerable', (req, res) => {
   const filePath = 'files';
   sendFileWithUserSuppliedName(res, filePath);

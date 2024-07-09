@@ -7,10 +7,14 @@ app.use(express.static(__dirname));
 // VULNERABLE FUNCTION - SEND FILE WITH USER-SUPPLIED FILENAME
 function sendFileWithUserSuppliedName(res, filePath) {
   const filename = req.query.filename; // User-supplied filename without validation
-  
-  const normalizedPath = path.normalize(filename);
+
+  let urlPath = url.parse(filename).pathname;
+  urlPath = urlPath.replace(/%2e/ig, '.');
+  urlPath = urlPath.replace(/%2f|%5c/ig, '/');
+
+  const normalizedPath = path.normalize(urlPath);
 	if (!normalizedPath.startsWith('/public')) {
-		throw new Error('Illegal path supplied in the input url: ' + filename);
+		throw new Error('Illegal path supplied in the input url: ' + urlPath);
 	}
   
   const fullPath = path.join(__dirname, filePath, normalizedPath);

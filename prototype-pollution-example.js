@@ -8,5 +8,5 @@ const pollutedObj = {
   };
   
   const array = [];
-  array.__proto__ = pollutedObj;
+  //array.__proto__ = pollutedObj;
   console.log(Array.length); // Output: 999 instead of expected value

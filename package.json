@@ -10,7 +10,7 @@
     "license": "ISC",
     "dependencies": {
       "colors": "1.2.4",
-      "express": "4.19.2",
+      "express": "4.21.0",
       "lodash": "4.17.21",
       "mongoose": "5.13.20",
       "request": "2.88.2"
